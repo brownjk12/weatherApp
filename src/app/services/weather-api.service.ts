@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { WeatherInterface } from '../models/weatherAPI.models';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class WeatherAPIService {
+  constructor(private http: HttpClient) {}
+
+  fetchWeatherData(placeName: string): Observable<WeatherInterface> {
+    return this.http.get<WeatherInterface>(environment.baseURL, {
+      headers: new HttpHeaders()
+        .set(environment.XRapidAPIHostName, environment.XRapidAPIHostValue)
+        .set(environment.XRapidAPIKeyName, environment.XRapidAPIKeyValue),
+      params: new HttpParams()
+        .set('q', placeName)
+        .set('units', 'metrics')
+        .set('mode', 'json'),
+    });
+  }
+}
