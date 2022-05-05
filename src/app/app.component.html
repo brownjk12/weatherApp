@@ -1,10 +1,17 @@
+<div class="search">
+  <form #form="ngForm" (submit)="fetchData()">
+    <input type="text" name="" id="" placeholder="Enter city to search" name="city" [(ngModel)]="cityName">
+
+  </form>
+</div>
+
 <div class="container" *ngIf="weatherData">
   <div class="upper-data">
-    <img src="../assets/hot.jpg" alt="" srcset="" *ngIf="weatherData.main.temp > 30">
-    <img src="../assets/main.jpg" alt="" srcset="" *ngIf="weatherData.main.temp <= 30">
+    <img src="../assets/hot.jpg" alt="" srcset="" *ngIf="(weatherData.main.temp -32 )*5/9  > 30">
+    <img src="../assets/main.jpg" alt="" srcset="" *ngIf="(weatherData.main.temp -32 )*5/9  <= 30">
     <div class="weather-data">
       <div class="location">{{weatherData.name}}, {{weatherData.sys.country}}</div>
-      <div class="temperature">{{weatherData.main.temp | number:'1.0-0'}} °C</div>
+      <div class="temperature">{{(weatherData.main.temp -32 )*5/9 | number:'1.0-0'}} °C</div>
     </div>
   </div>
   <div class="lower-data">
@@ -15,7 +22,7 @@
           <span>Min</span>
         </div>
         <div class="info-block-value">
-          {{weatherData.main.temp_min | number:'1.0-0' }} °C
+          {{(weatherData.main.temp_min -32 )*5/9 | number:'1.0-0' }} °C
         </div>
       </div>
 
@@ -25,7 +32,7 @@
           <span>Max</span>
         </div>
         <div class="info-block-value">
-          {{weatherData.main.temp_max | number:'1.0-0' }} °C
+          {{(weatherData.main.temp_max -32 )*5/9 | number:'1.0-0' }} °C
         </div>
       </div>
 

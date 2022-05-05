@@ -17,7 +17,7 @@ export class WeatherAPIService {
         .set(environment.XRapidAPIKeyName, environment.XRapidAPIKeyValue),
       params: new HttpParams()
         .set('q', placeName)
-        .set('units', 'metrics')
+        .set('units', 'imperial')
         .set('mode', 'json'),
     });
   }
