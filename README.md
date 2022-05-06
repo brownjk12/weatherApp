@@ -4,11 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Screen Shot:
 
-Fetched based on Geo location
-<img src="appInfo/LowerTemp.PNG" />
+> Fetched based on Geo location
+> <img src="appInfo/LowerTemp.PNG" />
 
-Fetched based on cityname searched
-<img src="appInfo/MaxTemp.png" />
+> Fetched based on cityname searched
+> <img src="appInfo/MaxTemp.png" />
 
 ## Development server
 
