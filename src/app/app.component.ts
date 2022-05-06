@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private weatherService: WeatherAPIService) {}
 
   weatherData?: WeatherInterface;
-  cityName: string = 'Bengaluru';
+  cityName: string = '';
 
   fetchData() {
     this.getWeather(this.cityName);
@@ -19,8 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getWeather(this.cityName);
-    this.cityName = '';
+    this.getWeatherByGeoLocation();
   }
 
   private getWeather(cityName: string) {
@@ -29,5 +28,20 @@ export class AppComponent implements OnInit {
         this.weatherData = response;
       },
     });
+  }
+
+  private getWeatherByGeoLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let long = position.coords.longitude;
+        let lat = position.coords.latitude;
+        this.weatherService.getlocation(lat, long).subscribe({
+          next: (res) => {
+            this.getWeather(res.city);
+            this.cityName = '';
+          },
+        });
+      });
+    }
   }
 }

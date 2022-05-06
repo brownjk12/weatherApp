@@ -21,4 +21,10 @@ export class WeatherAPIService {
         .set('mode', 'json'),
     });
   }
+
+  getlocation(lat: any, long: any) {
+    var geoAPI = `${environment.reverseGeoCodeURL}latitude=${lat}&longitude=${long}&localityLanguage=en`;
+
+    return this.http.get<any>(geoAPI);
+  }
 }
