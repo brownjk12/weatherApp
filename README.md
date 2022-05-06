@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 > <img src="appInfo/LowerTemp.PNG" />
 
 > Fetched based on cityname searched
-> <img src="appInfo/MaxTemp.png" />
+> <img src="appInfo/MaxTemp.PNG" />
 
 ## Development server
 
